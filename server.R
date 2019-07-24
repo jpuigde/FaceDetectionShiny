@@ -17,23 +17,16 @@ shinyServer(function(input, output, session) {
                  
                  if(!dir.exists("output")){dir.create("output")}
                  
-                 # save the original photo
-                 png::writePNG(vals$photo,"output/photo.png")
+                 img <- round(vals$photo*255)
+                 img <- np_array(img, dtype = "uint8")
+                 vals$face <- get_faces(img)
                  
-                 # render & Proces the original photo
-                 output$photo <- renderImage({
-                   file.remove("output/face.png")
-                   system('python facialRecognition.py')
-                   
-                   list(src ="output/photo.png",
-                        alt = "Original photo",
-                        height = '250px')})
-
-                 # render the modified photo
-                 output$face <- renderImage({
-                   list(src ="output/face.png",
-                        alt = "Modified photo",
-                        height = '250px') },
-                   deleteFile = F)
-                            })
+                 output$photo <- renderPlot({
+                   countcolors::plotArrayAsImage(vals$photo)
+                 })
+                 output$face <- renderPlot({
+                   countcolors::plotArrayAsImage(vals$face/255)
+                 })
+                 
+          })
 })
