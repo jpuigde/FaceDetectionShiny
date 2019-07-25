@@ -27,6 +27,5 @@ shinyServer(function(input, output, session) {
                  output$face <- renderPlot({
                    countcolors::plotArrayAsImage(vals$face/255)
                  })
-                 
           })
 })

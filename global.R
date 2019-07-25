@@ -2,11 +2,9 @@ library(shiny)
 library(reticulate)
 library(shinysense)
 library(tidyverse)
-
-# py_install()
-# conda_create("r-reticulate")
-# conda_install("r-reticulate", "numpy")
-# conda_install("r-reticulate", "Opencv")
-
+# envname = "C:/Users/fluendo/Anaconda3/envs/facialRecognition"
+# use_virtualenv(envname)
 
 source_python('facialRecognition.py')
+
+
