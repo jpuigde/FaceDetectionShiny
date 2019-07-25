@@ -8,7 +8,6 @@ shinyServer(function(input, output, session) {
     vals$face_r  <- img %>% ocv_face() %>% ocv_bitmap() %>% aperm(c(3,2,1))
   })
   output$photo_r <- renderPlot({
-    print(vals$photo_r)
     if(!is.null(vals$photo_r) ) countcolors::plotArrayAsImage(vals$photo_r)
   })
   

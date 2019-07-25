@@ -12,8 +12,6 @@ library(shiny)
 # Add to PATH C:\Users\~\Anaconda3 And Anaconda3\Library\bin
 # olny work on explorer
 
-
-
 shinyUI(
   fluidPage(
     fluidRow( column(2),
